@@ -10,11 +10,10 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        String   @id @default(cuid())
-  name      String
-  email     String   @unique
-  createdAt DateTime @default(now())
+model Conta {
+  id        Int    @id @default(autoincrement())
+  descricao String @unique @db.VarChar(50)
+  valor     String @db.VarChar(50)
 
-  @@map("users")
+  @@map("contas")
 }

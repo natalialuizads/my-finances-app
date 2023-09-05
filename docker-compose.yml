@@ -8,32 +8,32 @@ services:
     ports:
       - 5432:5432
 
-  backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
-    ports:
-      - 5000:5000
-      - 9229:9229 # for debugging
-    volumes:
-      - ./backend:/usr/src/app
-      - /usr/src/app/node_modules
-    command: npm run start:dev
-    depends_on:
-      - postgres
-    environment:
-      DATABASE_URL: postgres://postgres@postgres:5432/my-finances_dev
-      PORT: 5000
+  # backend:
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 3000:3000
+  #     - 9229:9229 # for debugging
+  #   volumes:
+  #     - ./backend:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   command: npm run start:dev
+  #   depends_on:
+  #     - postgres
+  #   environment:
+  #     DATABASE_URL: postgres://postgres@postgres:5432/my-finances_dev
+  #     PORT: 3000
 
-  front:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    ports:
-      - 4200:4200
-    volumes:
-      - ./frontend:/usr/src/app
-      - /usr/src/app/node_modules
-    command: npm run start -- --host 0.0.0.0
-    depends_on:
-      - backend
+  # front:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 4200:4200
+  #   volumes:
+  #     - ./frontend:/usr/src/app
+  #     - /usr/src/app/node_modules
+  #   command: npm run start -- --host 0.0.0.0
+  #   depends_on:
+  #     - backend

@@ -11,5 +11,5 @@ RUN npx prisma generate
 
 COPY . .
 
-EXPOSE 3333
-CMD [ "npm", "start" ]
+EXPOSE 3000
+CMD [ "npm", "start", "dev" ]
