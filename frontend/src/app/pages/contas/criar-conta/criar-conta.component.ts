@@ -1,10 +1,11 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TuiInputModule } from '@taiga-ui/kit';
 import { Router, RouterLink } from '@angular/router';
-import { TuiAlertModule, TuiAlertService, TuiButtonModule, TuiNotificationModule } from '@taiga-ui/core';
+import { TuiButtonModule, TuiNotificationModule } from '@taiga-ui/core';
 import { ContaService } from '../services/conta.service';
+import { Conta } from '../interfaces/conta';
 
 @Component({
   selector: 'app-criar-conta',
@@ -23,19 +24,20 @@ import { ContaService } from '../services/conta.service';
 export default class CriarContaComponent {
   error = false;
   public form = this.fb.group({
-    descricao: ['', [Validators.required]],
-    valor: ['', [Validators.required]],
+    descricao: ['', { validators: [Validators.required], nonNullable: true }],
+    valor: ['', { validators: [Validators.required], nonNullable: true }],
   });
 
   constructor(
-    private fb: FormBuilder,
+    private fb: NonNullableFormBuilder,
     private readonly contaService: ContaService,
     private router: Router,
   ) { }
 
   public criar() {
     this.error = false
-    this.contaService.criarConta(this.form.value).subscribe({
+    const conta = this.form.value as Conta;
+    this.contaService.criarConta(conta).subscribe({
       next: () => {
         this.form.reset();
         this.router.navigate(['/contas']);
