@@ -1,0 +1,26 @@
+<div class="container__header">
+  <h1>Criar nova conta</h1>
+</div>
+<tui-notification status="error" class="tui-space_vertical-4" *ngIf="error">
+  Não foi possível cadastrar, tente novamente!
+</tui-notification>
+<div>
+  <form class="b-form" [formGroup]="form">
+    <tui-input formControlName="descricao">
+      Descrição
+      <input tuiTextfield type="text" />
+    </tui-input>
+    <tui-input formControlName="valor">
+      valor
+      <input tuiTextfield type="number" />
+    </tui-input>
+  </form>
+  <div class="botoes">
+    <button tuiButton type="button" (click)="criar()" [disabled]="!form.valid">
+      Criar
+    </button>
+    <button routerLink="/contas/listar" tuiButton type="button" appearance="secondary">
+      Voltar
+    </button>
+  </div>
+</div>

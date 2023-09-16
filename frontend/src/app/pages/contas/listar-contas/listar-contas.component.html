@@ -1,0 +1,12 @@
+<div class="container__header">
+  <h1>Listagem</h1>
+  <button tuiButton type="button" routerLink="/contas/criar">
+    Cadastrar
+  </button>
+</div>
+<div>
+  <ng-container *ngIf="contas$ | async as contas">
+    <app-tabela [contas]="contas" />
+  </ng-container>
+
+</div>

@@ -1,0 +1,36 @@
+<table tuiTable class="table" [columns]="columns">
+  <thead>
+    <tr tuiThGroup>
+      <th tuiTh [resizable]="true">
+        Descrição
+      </th>
+      <th tuiTh>Valor</th>
+    </tr>
+  </thead>
+  <tbody tuiTbody [data]="contas">
+    <tr *ngFor="let item of contas" tuiTr>
+      <td *tuiCell="'descricao'" tuiTd>
+        {{ item.descricao }}
+      </td>
+      <td *tuiCell="'valor'" tuiTd>
+        {{ item.valor }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- <table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Descrição</th>
+      <th>Valor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let conta of contas">
+      <td>{{ conta.id }}</td>
+      <td>{{ conta.descricao }}</td>
+      <td>{{ conta.valor }}</td>
+    </tr>
+  </tbody>
+</table> -->
