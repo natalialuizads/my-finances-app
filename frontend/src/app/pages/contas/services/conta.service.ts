@@ -12,11 +12,19 @@ export class ContaService {
 
   constructor(private readonly http: HttpClient) { }
 
-  public listarContas(): Observable<Conta[]> {
+  public listar(): Observable<Conta[]> {
     return this.http.get<Conta[]>(`${URL}/conta`);
   }
 
-  public criarConta(conta: Conta): Observable<unknown> {
+  public criar(conta: Conta): Observable<unknown> {
     return this.http.post(`${URL}/conta`, conta);
+  }
+
+  public editar({ id, ...conta }: Conta): Observable<unknown> {
+    return this.http.put(`${URL}/conta/${id}, `, conta);
+  }
+
+  public deletar(id: number): Observable<unknown> {
+    return this.http.delete(`${URL}/conta/${id}`);
   }
 }
