@@ -22,6 +22,10 @@ export const routes: Routes = [
       {
         path: 'criar',
         loadComponent: () => import('./pages/contas/criar-conta/criar-conta.component')
+      },
+      {
+        path: 'editar/:id',
+        loadComponent: () => import('./pages/contas/editar-conta/editar-conta.component')
       }
     ]
   }

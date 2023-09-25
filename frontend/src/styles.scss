@@ -6,3 +6,8 @@ body {
   padding: 0;
   background-color: var(--tui-base-02);
 }
+
+.formulario__botoes {
+  display: flex;
+  gap: 1rem;
+}

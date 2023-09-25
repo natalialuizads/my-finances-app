@@ -1,13 +1,13 @@
 <div class="container__header">
-  <h1>Criar nova conta</h1>
+  <h1>Editar conta</h1>
 </div>
 <tui-notification status="error" class="tui-space_vertical-4" *ngIf="error">
-  Não foi possível cadastrar, tente novamente!
+  Não foi possível editar, tente novamente!
 </tui-notification>
 <div>
   <app-formulario [formGroup]="form" />
   <div class="formulario__botoes">
-    <button tuiButton type="button" (click)="criar()" [disabled]="!form.valid">
+    <button tuiButton type="button" (click)="editar()" [disabled]="!form.valid">
       Criar
     </button>
     <button routerLink="/contas/listar" tuiButton type="button" appearance="secondary">

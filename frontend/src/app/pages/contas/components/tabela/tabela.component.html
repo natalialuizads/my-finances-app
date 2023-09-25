@@ -15,22 +15,16 @@
       <td *tuiCell="'valor'" tuiTd>
         {{ item.valor }}
       </td>
+      <td>
+        <button tuiButton type="button" [routerLink]="['/contas/editar', item.id]" title="editar">
+          <tui-svg src="tuiIconEdit"></tui-svg>
+        </button>
+      </td>
+      <td>
+        <button tuiButton type="button" (click)="deletarConta.emit(item.id)" title="deletar">
+          <tui-svg src="tuiIconTrash"></tui-svg>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
-<!-- <table>
-  <thead>
-    <tr>
-      <th>Id</th>
-      <th>Descrição</th>
-      <th>Valor</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let conta of contas">
-      <td>{{ conta.id }}</td>
-      <td>{{ conta.descricao }}</td>
-      <td>{{ conta.valor }}</td>
-    </tr>
-  </tbody>
-</table> -->
