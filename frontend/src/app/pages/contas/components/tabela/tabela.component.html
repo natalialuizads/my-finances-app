@@ -5,6 +5,7 @@
         Descrição
       </th>
       <th tuiTh>Valor</th>
+      <th tuiTh></th>
     </tr>
   </thead>
   <tbody tuiTbody [data]="contas">
@@ -15,14 +16,12 @@
       <td *tuiCell="'valor'" tuiTd>
         {{ item.valor }}
       </td>
-      <td>
+      <td *tuiCell="'ações'" tuiTd>
         <button tuiButton type="button" [routerLink]="['/contas/editar', item.id]" title="editar">
-          <tui-svg src="tuiIconEdit"></tui-svg>
+          editar
         </button>
-      </td>
-      <td>
         <button tuiButton type="button" (click)="deletarConta.emit(item.id)" title="deletar">
-          <tui-svg src="tuiIconTrash"></tui-svg>
+          deletar
         </button>
       </td>
     </tr>

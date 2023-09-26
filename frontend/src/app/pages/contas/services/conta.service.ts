@@ -16,6 +16,10 @@ export class ContaService {
     return this.http.get<Conta[]>(`${URL}/conta`);
   }
 
+  public buscarPorId(id: number): Observable<Conta> {
+    return this.http.get<Conta>(`${URL}/conta/${id}`);
+  }
+
   public criar(conta: Conta): Observable<unknown> {
     return this.http.post(`${URL}/conta`, conta);
   }

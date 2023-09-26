@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Conta } from '../interfaces/conta';
 import { Router, RouterLink } from '@angular/router';
@@ -24,14 +24,23 @@ import { FormularioComponent } from '../components/formulario/formulario.compone
   templateUrl: './editar-conta.component.html',
   styleUrls: ['./editar-conta.component.scss']
 })
-export default class EditarContaComponent {
-  error = false;
+export default class EditarContaComponent implements OnInit {
+  public error = false;
   public form = criarFormConta();
+  @Input() id!: number;
 
   constructor(
     private readonly contaService: ContaService,
     private router: Router,
   ) { }
+
+  ngOnInit(): void {
+    this.contaService.buscarPorId(this.id).subscribe({
+      next: (conta: Conta) => {
+        this.form.patchValue(conta);
+      }
+    })
+  }
 
   public editar() {
     this.error = false

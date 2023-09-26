@@ -5,7 +5,7 @@
   </button>
 </div>
 <div>
-  <ng-container *ngIf="contas$ | async as contas">
+  <div *ngIf="contas$ | async as contas">
     <app-tabela [contas]="contas" (deletarConta)="deletar($event)" />
-  </ng-container>
+  </div>
 </div>
