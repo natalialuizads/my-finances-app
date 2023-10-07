@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Conta } from '../interfaces/conta';
-import { Router, RouterLink } from '@angular/router';
-import { criarFormConta } from '../components/formulario/form-fields';
-import { ContaService } from '../services/conta.service';
-import { ReactiveFormsModule } from '@angular/forms';
-import { TuiButtonModule, TuiNotificationModule } from '@taiga-ui/core';
-import { TuiInputModule } from '@taiga-ui/kit';
-import { FormularioComponent } from '../components/formulario/formulario.component';
+import { Component, Input, OnInit } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { Conta } from '../interfaces/conta'
+import { Router, RouterLink } from '@angular/router'
+import { criarFormConta } from '../components/formulario/form-fields'
+import { ContaService } from '../services/conta.service'
+import { ReactiveFormsModule } from '@angular/forms'
+import { TuiButtonModule, TuiNotificationModule } from '@taiga-ui/core'
+import { TuiInputModule } from '@taiga-ui/kit'
+import { FormularioComponent } from '../components/formulario/formulario.component'
 
 @Component({
   selector: 'app-editar-conta',
@@ -27,32 +27,34 @@ import { FormularioComponent } from '../components/formulario/formulario.compone
 export default class EditarContaComponent implements OnInit {
   public error = false;
   public form = criarFormConta();
-  @Input() id!: number;
+  @Input() id!: number
 
-  constructor(
+  constructor (
     private readonly contaService: ContaService,
-    private router: Router,
+    private router: Router
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit (): void {
     this.contaService.buscarPorId(this.id).subscribe({
       next: (conta: Conta) => {
-        this.form.patchValue(conta);
+        this.form.patchValue(conta)
       }
     })
   }
 
-  public editar() {
+  public editar () {
     this.error = false
-    const conta = this.form.value as Conta;
-    this.contaService.editar(conta).subscribe({
-      next: () => {
-        this.form.reset();
-        this.router.navigate(['/contas']);
-      },
-      error: () => {
-        this.error = true;
-      }
-    })
+    const conta = this.form.value as Conta
+    this.contaService
+      .editar({ ...conta, id: this.id })
+      .subscribe({
+        next: () => {
+          this.form.reset()
+          this.router.navigate(['/contas'])
+        },
+        error: () => {
+          this.error = true
+        }
+      })
   }
 }

@@ -14,7 +14,7 @@ import { UpdatePutContaDTO } from './dto/update-put.dto';
 
 @Controller('conta')
 export class ContaController {
-  constructor(private readonly contaService: ContaService) { }
+  constructor(private readonly contaService: ContaService) {}
 
   @Get()
   async lista() {
@@ -22,7 +22,7 @@ export class ContaController {
   }
 
   @Post()
-  async criar(@Body() body: CreateContaDTO) {
+  async criar(@Body() body: CreateContaDTO): Promise<CreateContaDTO> {
     return this.contaService.criar(body);
   }
 
@@ -35,7 +35,7 @@ export class ContaController {
   async editar(
     @Param('id', ParseIntPipe) id: number,
     @Body() data: UpdatePutContaDTO,
-  ) {
+  ): Promise<UpdatePutContaDTO> {
     return this.contaService.editar(id, data);
   }
 

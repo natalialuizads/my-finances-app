@@ -1,5 +1,5 @@
 import { provideAnimations } from "@angular/platform-browser/animations";
-import { TuiAlertModule, TuiRootModule } from "@taiga-ui/core";
+import { TuiAlertModule, } from "@taiga-ui/core";
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
@@ -11,6 +11,6 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideHttpClient(),
     provideRouter(routes, withComponentInputBinding()),
-    importProvidersFrom(TuiRootModule, TuiAlertModule)
+    importProvidersFrom(TuiAlertModule),
   ]
 };

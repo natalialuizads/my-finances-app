@@ -25,7 +25,7 @@ export class ContaService {
   }
 
   public editar({ id, ...conta }: Conta): Observable<unknown> {
-    return this.http.put(`${URL}/conta/${id}, `, conta);
+    return this.http.put(`${URL}/conta/${id} `, conta);
   }
 
   public deletar(id: number): Observable<unknown> {

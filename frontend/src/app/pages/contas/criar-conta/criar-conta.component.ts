@@ -27,6 +27,7 @@ import { criarFormConta } from '../components/formulario/form-fields';
 })
 export default class CriarContaComponent {
   error = false;
+  statusCodeError = 0;
   public form = criarFormConta();
 
   constructor(
@@ -42,8 +43,9 @@ export default class CriarContaComponent {
         this.form.reset();
         this.router.navigate(['/contas']);
       },
-      error: () => {
+      error: (response) => {
         this.error = true;
+        this.statusCodeError= response.status;
       }
     })
   }

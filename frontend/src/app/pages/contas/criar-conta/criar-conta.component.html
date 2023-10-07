@@ -2,7 +2,7 @@
   <h1>Criar nova conta</h1>
 </div>
 <tui-notification status="error" class="tui-space_vertical-4" *ngIf="error">
-  Não foi possível cadastrar, tente novamente!
+  {{ statusCodeError === 409 ? 'Já existe uma conta com esse nome' : 'Não foi possível cadastrar, tente novamente!'}}
 </tui-notification>
 <div>
   <app-formulario [formGroup]="form" />

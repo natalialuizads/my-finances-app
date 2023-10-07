@@ -1,4 +1,4 @@
-<table tuiTable class="table" [columns]="columns">
+<table tuiTable class="table" [columns]="columns" *ngIf="contas.length; else semRegistro" aria-label="Tabela de contas">
   <thead>
     <tr tuiThGroup>
       <th tuiTh [resizable]="true">
@@ -16,14 +16,38 @@
       <td *tuiCell="'valor'" tuiTd>
         {{ item.valor }}
       </td>
-      <td *tuiCell="'ações'" tuiTd>
-        <button tuiButton type="button" [routerLink]="['/contas/editar', item.id]" title="editar">
-          editar
-        </button>
-        <button tuiButton type="button" (click)="deletarConta.emit(item.id)" title="deletar">
-          deletar
-        </button>
+      <td *tuiCell="'ações'" tuiTd class="container__td">
+        <div class="tui-space_top-3 container__button">
+         <button
+           class="tui-space_right-3 tui-space_bottom-3"
+           tuiButton
+           appearance="outline"
+           icon="tuiIconEdit2"
+           title="editar conta"
+           size="s"
+           [routerLink]="['/contas/editar', item.id]"
+           title="editar conta"
+          >
+           </button>
+          <button
+            class="tui-space_right-3 tui-space_bottom-3"
+            tuiButton
+            appearance="outline"
+            icon="tuiIconTrash"
+            title="deletar conta"
+            size="s"
+            type="button"
+            (click)="deletar(item.id)"
+          >
+          </button>
+        </div>
       </td>
     </tr>
   </tbody>
 </table>
+
+<ng-template #semRegistro>
+  <tui-notification status="info" class="tui-space_vertical-4">
+    Não há registros para exibir. Clique no botão " Adicionar" para adicionar um novo registro.
+  </tui-notification>
+</ng-template>
