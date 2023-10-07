@@ -1,11 +1,10 @@
 # my-finances-app
 
-## pré requisito
+> NÃO envie arquivos .env para o controle de versão, adicione `.env` a `.gitignore`. Arquivos `.env` são adicionados aqui como exemplo.
 
-- Node.js
+## pré requisito
+- Docker
 
 ### Comandos para rodar projetos
 
-- docker compose up // para subir imagem postgres
-- npm run start:dev // backend
-- ng serve // frontend
+docker compose up

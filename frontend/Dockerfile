@@ -1,11 +1,12 @@
-FROM node:18
+FROM node:18 AS builder
 
-WORKDIR /usr/src/app
+RUN mkdir -p /usr/src/front
+WORKDIR /usr/src/front
 
-COPY package*.json ./
+COPY package*.json /usr/src/front/
 
 RUN npm install
 
-COPY . .
+COPY . /usr/src/front
 
 CMD ng serve --host 0.0.0.0
