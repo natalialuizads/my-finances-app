@@ -7,10 +7,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Categoria {
+  id        Int     @id @default(autoincrement())
+  nome String  @unique @db.VarChar(50)
+  Conta     Conta[]
+
+  @@map("categorias")
+}
+
 model Conta {
   id        Int    @id @default(autoincrement())
   descricao String @unique @db.VarChar(50)
   valor     String @db.VarChar(50)
+
+  categoriaId Int
+  categoria   Categoria @relation(fields: [categoriaId], references: [id])
 
   @@map("contas")
 }

@@ -1,4 +1,4 @@
-FROM node:18 AS builder
+FROM node:16 AS builder
 
 RUN mkdir -p /usr/src/front
 WORKDIR /usr/src/front
