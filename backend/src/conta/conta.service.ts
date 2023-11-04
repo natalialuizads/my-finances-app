@@ -5,9 +5,11 @@ import { UpdatePutContaDTO } from './dto/update-put.dto';
 
 @Injectable()
 export class ContaService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   async criar(data: CreateContaDTO): Promise<CreateContaDTO> {
+    data.categoriaId = +data.categoriaId;
+
     const contaExistente = await this.prisma.conta.findUnique({
       where: {
         descricao: data.descricao,
@@ -24,7 +26,25 @@ export class ContaService {
   }
 
   async listar() {
-    return this.prisma.conta.findMany();
+    const contas = await this.prisma.conta.findMany();
+
+    const contasComCategoria = await Promise.all(
+      contas.map(async ({ id, descricao, valor, categoriaId }) => {
+        const categoria = await this.prisma.categoria.findUnique({
+          where: { id: categoriaId },
+        });
+        
+        return {
+          id,
+          descricao,
+          valor,
+          categoria,
+        };
+      }),
+    );
+
+
+    return contasComCategoria;
   }
 
   async buscarPorId(id: number) {

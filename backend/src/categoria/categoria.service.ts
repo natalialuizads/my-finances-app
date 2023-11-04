@@ -31,24 +31,19 @@ export class CategoriaService {
   }
 
   async findOne(id: number) {
-    await this.categoriaNaoExiste(id);
-
     return this.prisma.categoria.findUnique({
       where: { id },
     });
   }
 
-  async update(id: number, updateCategoriaDto: UpdateCategoriaDto) {
-    await this.categoriaNaoExiste(id);
-
+  async update(id: number, data: UpdateCategoriaDto) {
     return this.prisma.categoria.update({
       where: { id },
-      data: updateCategoriaDto,
+      data,
     });
   }
 
   async remove(id: number) {
-    await this.categoriaNaoExiste(id);
 
     return this.prisma.categoria.delete({
       where: { id },

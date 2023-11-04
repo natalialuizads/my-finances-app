@@ -3,3 +3,19 @@ form {
   gap: 1rem;
   margin-bottom: 2rem;
 }
+
+select {
+  padding: 16px;
+  background: var(--tui-base-01);
+  color: var(--tui-text-01);
+  box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
+  display: block;
+  border-radius: var(--tui-radius-m);
+  text-align: left;
+  background-color: var(--tui-base-01);
+  color: var(--tui-text-01);
+  box-shadow: 0 0.125rem 0.1875rem rgba(0, 0, 0, 0.1);
+  border: solid transparent;
+  border-inline-start-width: var(--border-start, 0);
+  border-inline-end-width: var(--border-end, 0);
+}

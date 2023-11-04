@@ -1,24 +1,16 @@
-<table tuiTable class="table" [columns]="columns" *ngIf="contas.length; else semRegistro" aria-label="Tabela de contas">
+<table tuiTable class="table" [columns]="columns"  aria-label="Tabela de categorias">
   <thead>
     <tr tuiThGroup>
       <th tuiTh [resizable]="true">
-        Descrição
+        Nome
       </th>
-      <th tuiTh>Valor</th>
-      <th tuiTh>Categoria</th>
       <th tuiTh></th>
     </tr>
   </thead>
-  <tbody tuiTbody [data]="contas">
-    <tr *ngFor="let item of contas" tuiTr>
-      <td *tuiCell="'descricao'" tuiTd>
-        {{ item.descricao }}
-      </td>
-      <td *tuiCell="'valor'" tuiTd>
-        {{ item.valor }}
-      </td>
-      <td *tuiCell="'categoria'" tuiTd>
-        {{ item.categoria.nome  }}
+  <tbody tuiTbody [data]="categorias">
+    <tr *ngFor="let item of categorias" tuiTr>
+      <td *tuiCell="'nome'" tuiTd>
+        {{ item.nome }}
       </td>
       <td *tuiCell="'ações'" tuiTd class="container__td">
         <div class="tui-space_top-3 container__button">
@@ -27,10 +19,10 @@
            tuiButton
            appearance="outline"
            icon="tuiIconEdit2"
-           title="editar conta"
+           title="editar categoria"
            size="s"
-           [routerLink]="['/contas/editar', item.id]"
-           title="editar conta"
+           title="editar categoria"
+           [routerLink]="['/categorias/editar', item.id]"
           >
            </button>
           <button
@@ -38,7 +30,7 @@
             tuiButton
             appearance="outline"
             icon="tuiIconTrash"
-            title="deletar conta"
+            title="deletar categoria"
             size="s"
             type="button"
             (click)="deletar(item.id)"

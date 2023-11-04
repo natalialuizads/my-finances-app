@@ -7,6 +7,10 @@ body {
   background-color: var(--tui-base-02);
 }
 
+a {
+  text-decoration: none;
+}
+
 .formulario__botoes {
   display: flex;
   gap: 1rem;

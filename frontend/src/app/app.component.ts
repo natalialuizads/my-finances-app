@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink } from '@angular/router';
 import { TuiRootModule } from '@taiga-ui/core';
 
 @Component({
@@ -10,6 +10,7 @@ import { TuiRootModule } from '@taiga-ui/core';
     CommonModule,
     RouterOutlet,
     TuiRootModule,
+    RouterLink,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

@@ -1,0 +1,17 @@
+<div class="container__header">
+  <h1>Criar nova categoria</h1>
+</div>
+<tui-notification status="error" class="tui-space_vertical-4" *ngIf="error">
+  {{ statusCodeError === 409 ? 'Já existe uma categoria com esse nome' : 'Não foi possível cadastrar, tente novamente!'}}
+</tui-notification>
+<div>
+  <app-formulario [formGroup]="form" />
+  <div class="formulario__botoes">
+    <button tuiButton type="button" (click)="criar()" [disabled]="!form.valid">
+      Criar
+    </button>
+    <button routerLink="/categorias/listar" tuiButton type="button" appearance="secondary">
+      Voltar
+    </button>
+  </div>
+</div>

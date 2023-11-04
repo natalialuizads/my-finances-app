@@ -1,0 +1,17 @@
+<div class="container__header">
+  <h1>Editar categoria</h1>
+</div>
+<tui-notification status="error" class="tui-space_vertical-4" *ngIf="error">
+  Não foi possível editar, tente novamente!
+</tui-notification>
+<div>
+  <app-formulario [formGroup]="form" />
+  <div class="formulario__botoes">
+    <button tuiButton type="button" (click)="editar()" [disabled]="!form.valid">
+      atualizar
+    </button>
+    <button routerLink="/categorias/listar" tuiButton type="button" appearance="secondary">
+      Voltar
+    </button>
+  </div>
+</div>

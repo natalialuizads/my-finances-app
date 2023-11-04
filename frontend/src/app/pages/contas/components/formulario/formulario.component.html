@@ -7,4 +7,12 @@
     <label for="valor">valor</label>
     <input tuiTextfield type="number" id="valor" />
   </tui-input>
+
+  <select name="categoria" id="categoriaId" formControlName="categoriaId" >
+    <option value="">Selecione uma categoria</option>
+    <option *ngFor="let categoria of categorias$ | async" [value]="categoria.id">
+      {{categoria.nome}}
+    </option>
+  </select>
+
 </form>

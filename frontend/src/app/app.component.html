@@ -3,6 +3,20 @@
     <header>
       <h1>My<span class="titulo">Finances</span></h1>
     </header>
+       <aside>
+        <nav>
+        <ul class="menu">
+          <li>
+            <a routerLink="/contas/listar" routerLinkActive="active" class="menu__item">
+              Contas
+            </a>
+          </li>
+          <li>
+            <a routerLink="/categorias/listar" routerLinkActive="active" class="menu__item">Categorias</a>
+          </li>
+        </ul>
+       </nav>
+      </aside>
     <main class="container">
       <router-outlet></router-outlet>
     </main>
