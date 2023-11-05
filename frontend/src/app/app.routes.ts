@@ -30,6 +30,10 @@ export const routes: Routes = [
     ]
   },
   {
+    path: 'balanco',
+    loadComponent: () => import('./pages/balanco/balanco.component')
+  },
+  {
     path: 'categorias',
     loadComponent: () => import('./pages/categorias/categorias.component'),
     children: [
