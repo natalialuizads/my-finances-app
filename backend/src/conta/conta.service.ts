@@ -61,7 +61,10 @@ export class ContaService {
 
     return this.prisma.conta.update({
       where: { id },
-      data,
+      data: {
+        ...data,
+        categoriaId: +data.categoriaId,
+      },
     });
   }
 
