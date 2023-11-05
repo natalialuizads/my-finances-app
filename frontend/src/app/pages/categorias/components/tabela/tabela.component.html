@@ -1,4 +1,4 @@
-<table tuiTable class="table" [columns]="columns"  aria-label="Tabela de categorias">
+<table tuiTable class="table" [columns]="columns" *ngIf="categorias.length; else semRegistro" aria-label="Tabela de categorias">
   <thead>
     <tr tuiThGroup>
       <th tuiTh [resizable]="true">
@@ -44,6 +44,6 @@
 
 <ng-template #semRegistro>
   <tui-notification status="info" class="tui-space_vertical-4">
-    Não há registros para exibir. Clique no botão " Adicionar" para adicionar um novo registro.
+    Não há categorias para exibir. Clique no botão "Adicionar" para adicionar um nova categoria.
   </tui-notification>
 </ng-template>
