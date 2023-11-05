@@ -1,18 +1,27 @@
 <div>
-  <h1>Balanço mensal</h1>
+  <h1>Balanço geral</h1>
 
-  <div *ngIf="balanco$ | async as balanco">
-    <h2>Categorias</h2>
-    <div class="categoria__container">
-      <ul class="categoria__lista">
-        <li *ngFor="let categoria of balanco.categorias">
-          <p class="categoria__item">
-            {{ categoria.nome }}: <strong>{{ categoria.valorTotal | currency : 'BRL' }}</strong>
-          </p>
-        </li>
-      </ul>
+  <ng-container *ngIf="(balanco$ | async)?.valorTotal; else semRegistro">
+    <div *ngIf="balanco$ | async as balanco">
+      <h2>Categorias</h2>
+      <div class="categoria__container">
+        <ul class="categoria__lista">
+          <li *ngFor="let categoria of balanco.categorias">
+            <p class="categoria__item">
+              {{ categoria.nome }}: <strong>{{ categoria.valorTotal | currency : 'BRL' }}</strong>
+            </p>
+          </li>
+        </ul>
 
-      <p class="categoria__paragrafo">Total: <strong>{{ balanco.valorTotal | currency : 'BRL' }}</strong></p>
+        <p class="categoria__paragrafo">Total: <strong>{{ balanco.valorTotal | currency : 'BRL' }}</strong></p>
+      </div>
     </div>
-  </div>
+  </ng-container>
+
+
+  <ng-template #semRegistro>
+    <tui-notification status="info" class="tui-space_vertical-4">
+     Não há valores para exibir, adicione uma nova transação para visualizar o balanço.
+    </tui-notification>
+  </ng-template>
 </div>

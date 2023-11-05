@@ -3,11 +3,15 @@ import { CommonModule } from '@angular/common';
 import { BalancoService } from './services/balanco.service';
 import { Balanco } from './interfaces/balanco';
 import { Observable } from 'rxjs';
+import { TuiNotificationModule } from '@taiga-ui/core';
 
 @Component({
   selector: 'app-balanco',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    TuiNotificationModule,
+  ],
   templateUrl: './balanco.component.html',
   styleUrls: ['./balanco.component.scss']
 })
