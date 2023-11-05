@@ -30,7 +30,7 @@ export class BalancoService {
     const balancoPorCategoria = categorias.map((categoria) => {
       const valorTotal = contas.reduce((acc, conta) => {
         if (conta.categoriaId === categoria.id) {
-          return acc + conta.valor;
+          return acc + Number(conta.valor);
         }
         return acc;
       }, 0);
