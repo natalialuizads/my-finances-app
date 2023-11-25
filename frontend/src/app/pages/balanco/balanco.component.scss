@@ -1,0 +1,39 @@
+h1 {
+  margin-bottom: 3rem;
+}
+
+h2 {
+  margin-bottom: 2rem;
+}
+
+.categoria {
+  &__lista {
+    border-bottom: 2px dashed black;
+  }
+
+  &__item {
+    margin-bottom: 1rem;
+    display: flex;
+    font-size: 20px;
+    justify-content: space-between;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgb(65, 64, 64);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+  &__paragrafo {
+    margin-bottom: 1rem;
+    display: flex;
+    font-size: 20px;
+    justify-content: space-between;
+    padding-bottom: 1.5rem;
+  }
+}
+
+
+strong {
+  color: red;
+
+}
